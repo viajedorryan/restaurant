@@ -1,16 +1,16 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging
-import pyodbc
+# import pyodbc
 import os
 
 app = Flask(__name__)
 
 # Config SQL Server
-conn = pyodbc.connect("DRIVER={ODBC Driver 11 for SQL Server};"
-                      "SERVER=(local);"
-                      "DATABASE=SampleDB;"
-                      "UID=sa;"
-                      "PWD=1tc0r3;"
-                      "Trusted_Connection=yes;")
+# conn = pyodbc.connect("DRIVER={ODBC Driver 11 for SQL Server};"
+#                       "SERVER=(local);"
+#                       "DATABASE=SampleDB;"
+#                       "UID=sa;"
+#                       "PWD=1tc0r3;"
+#                       "Trusted_Connection=yes;")
 
 
 # cursor = conn.cursor()
@@ -20,12 +20,12 @@ conn = pyodbc.connect("DRIVER={ODBC Driver 11 for SQL Server};"
 
 @app.route("/")
 def hello():
-    cur = conn.cursor()
-    cur.execute("{CALL sp_test2()}")
-
-    clients = cur.fetchall()
-    cur.close()
-    return render_template('home.html', clients=clients)
+    # cur = conn.cursor()
+    # cur.execute("{CALL sp_test2()}")
+    #
+    # clients = cur.fetchall()
+    # cur.close()
+    return render_template('accounts/login.html')
 
 if __name__ == '__main__':
     app.secret_key='itcsi'
