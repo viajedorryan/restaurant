@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Config SQL Server
 conn = pyodbc.connect("DRIVER={ODBC Driver 11 for SQL Server};"
                       "SERVER=(local);"
-                      "DATABASE=dbPOSRestaurant;"
+                      "DATABASE=SampleDB;"
                       "UID=sa;"
                       "PWD=1tc0r3;"
                       "Trusted_Connection=yes;")
@@ -21,10 +21,10 @@ conn = pyodbc.connect("DRIVER={ODBC Driver 11 for SQL Server};"
 @app.route("/")
 def hello():
     cur = conn.cursor()
-    cur.execute('SELECT * FROM core_productcategory')
+    cur.execute("{CALL sp_test2()}")
 
     clients = cur.fetchall()
-
+    cur.close()
     return render_template('home.html', clients=clients)
 
 if __name__ == '__main__':
