@@ -1,0 +1,7 @@
+.site-form p>input#id_username,
+.site-form p>input#id_password {
+    width: 100% !important;
+}
+.login-page, .register-page {
+    background: #43c5a9 !important;
+}
